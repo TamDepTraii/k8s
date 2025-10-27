@@ -1,209 +1,255 @@
-# 📚 DOCUMENTATION INDEX
+# 📚 Mục Lục Tài Liệu - Documentation Index
 
-Tất cả hướng dẫn và giải pháp cho dự án K8s Demo.
+## 🚀 Bắt Đầu Ngay (START HERE!)
+
+### 📖 Đọc Những Tài Liệu Này Theo Thứ Tự:
+
+1. **[00_START_HERE.md](00_START_HERE.md)** ⭐ **BẮT ĐẦU ĐÂY**
+   - Tổng quan nhanh (5 phút)
+   - Kiểm tra yêu cầu
+   - 4 bước chính
+
+2. **[FINAL_ACTION_STEPS.md](FINAL_ACTION_STEPS.md)** 🎬 **HÀNH ĐỘNG NGAY**
+   - Chi tiết từng bước
+   - Lệnh cần chạy
+   - Kết quả mong đợi
+
+3. **[SETUP_SUMMARY.md](SETUP_SUMMARY.md)** 📋 **TÓM TẮT**
+   - Điều vừa hoàn thành
+   - File structure
+   - Quick help
 
 ---
 
-## 🚀 BẮT ĐẦU (START HERE)
+## 📖 Tài Liệu Chi Tiết
 
-1. **[README.md](./README.md)** - 📖 Hướng dẫn chính
-   - Yêu cầu hệ thống
-   - Các bước deployment
-   - Endpoints
-   - Troubleshooting cơ bản
+### ArgoCD Hướng Dẫn
 
-2. **[SOLUTION_SUMMARY.md](./SOLUTION_SUMMARY.md)** - 📧 Response về lỗi build image
-   - Tóm tắt vấn đề
-   - 3 bước fix nhanh
-   - Checklist
-   - Roadmap
+| Tài Liệu | Nội Dung | Thời Gian |
+|---------|---------|----------|
+| [ARGOCD_LOGIN_SOLUTION.md](ARGOCD_LOGIN_SOLUTION.md) | ✅ Đăng nhập ArgoCD + Lỗi | 10 min |
+| [ARGOCD_LOGIN_GUIDE.md](ARGOCD_LOGIN_GUIDE.md) | Hướng dẫn đăng nhập chi tiết | 5 min |
+| [DOCKER_ARGOCD_DASHBOARD.md](DOCKER_ARGOCD_DASHBOARD.md) | Docker + ArgoCD trên Desktop | 10 min |
+
+### Setup & Cài Đặt
+
+| Tài Liệu | Nội Dung | Thời Gian |
+|---------|---------|----------|
+| [README_SETUP.md](README_SETUP.md) | 📖 Hướng dẫn setup đầy đủ | 30 min |
+| [BUILD_INSTRUCTIONS.md](BUILD_INSTRUCTIONS.md) | Build Docker image | 5 min |
+| [README.md](README.md) | README chính của project | 10 min |
+
+### Git & GitHub
+
+| Tài Liệu | Nội Dung | Thời Gian |
+|---------|---------|----------|
+| [GITHUB_PUSH_GUIDE.md](GITHUB_PUSH_GUIDE.md) | 📤 Push lên GitHub | 15 min |
+| [GITHUB_PUSH_GUIDE.md](GITHUB_PUSH_GUIDE.md) | Troubleshooting Git | 10 min |
+
+### Troubleshooting
+
+| Tài Liệu | Nội Dung | Thời Gian |
+|---------|---------|----------|
+| [TROUBLESHOOTING_DETAILED.md](TROUBLESHOOTING_DETAILED.md) | Lỗi chi tiết | 20 min |
+| [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Vấn đề thường gặp | 10 min |
+
+### CI/CD Pipeline
+
+| Tài Liệu | Nội Dung | Thời Gian |
+|---------|---------|----------|
+| [README-CICD.md](README-CICD.md) | CI/CD configuration | 20 min |
+| [docs/CICD-GUIDE.md](docs/CICD-GUIDE.md) | GitHub Actions setup | 15 min |
+
+### Kubernetes
+
+| Tài Liệu | Nội Dung | Thời Gian |
+|---------|---------|----------|
+| [K8S_GUIDE.md](K8S_GUIDE.md) | Kubernetes guide | 20 min |
+| [PHASE3_KUBERNETES.md](PHASE3_KUBERNETES.md) | Advanced K8s setup | 30 min |
+| [docs/PROJECT-STRUCTURE.md](docs/PROJECT-STRUCTURE.md) | Project structure | 10 min |
 
 ---
 
-## 🔧 LỖI BUILD IMAGE - GIẢI PHÁP
+## 🎯 Tìm Kiếm Nhanh
 
-### Quick Reference (Đã có lỗi)
+### Nếu bạn muốn...
 
-**Chọn một:**
+**📝 Bắt đầu từ đầu**
+→ [00_START_HERE.md](00_START_HERE.md)
 
-#### ✅ Cách 1: Clean & Retry (80% hiệu quả)
-```bash
-docker builder prune --all
-mvn clean
-mvn spring-boot:build-image -Dspring-boot.build-image.imageName=k8s-demo:latest
+**🔐 Đăng nhập ArgoCD**
+→ [ARGOCD_LOGIN_SOLUTION.md](ARGOCD_LOGIN_SOLUTION.md)
+
+**📤 Push lên GitHub**
+→ [GITHUB_PUSH_GUIDE.md](GITHUB_PUSH_GUIDE.md)
+
+**🐳 Build Docker image**
+→ [BUILD_INSTRUCTIONS.md](BUILD_INSTRUCTIONS.md)
+
+**⚙️ Setup Kubernetes**
+→ [K8S_GUIDE.md](K8S_GUIDE.md)
+
+**❌ Fix lỗi**
+→ [TROUBLESHOOTING_DETAILED.md](TROUBLESHOOTING_DETAILED.md)
+
+**🚀 Setup CI/CD**
+→ [README-CICD.md](README-CICD.md)
+
+**📊 Xem metrics**
+→ Prometheus: `http://localhost:9090`
+
+**⚡ Kiểm tra health**
+→ `http://localhost:8080/actuator/health`
+
+---
+
+## 🔧 Scripts & Tools
+
+| Script | Tác Vụ | Chạy Bằng |
+|--------|--------|----------|
+| `setup-check.ps1` | Kiểm tra setup (Windows) | `powershell -ExecutionPolicy Bypass -File .\setup-check.ps1` |
+| `setup-check.sh` | Kiểm tra setup (Linux/Mac) | `bash setup-check.sh` |
+| `push-to-github.bat` | Push lên GitHub (Windows) | `.\push-to-github.bat` |
+| `build-image.bat` | Build Docker image | `.\build-image.bat` |
+| `deploy-k8s.bat` | Deploy lên Kubernetes | `.\deploy-k8s.bat` |
+| `cleanup-k8s.bat` | Cleanup resources | `.\cleanup-k8s.bat` |
+
+---
+
+## 📊 Kubernetes Files
+
+| File | Tác Vụ |
+|------|--------|
+| `k8s/namespace.yaml` | Tạo namespace |
+| `k8s/deployment.yaml` | Deploy app |
+| `k8s/service.yaml` | Expose service |
+| `k8s/configmap.yaml` | Configuration |
+| `k8s/hpa.yaml` | Auto-scaling |
+| `k8s/prometheus-config.yaml` | Monitoring |
+| `k8s/servicemonitor.yaml` | Prometheus metrics |
+
+---
+
+## 🔗 Các Links Quan Trọng
+
+| Link | Mục Đích |
+|------|---------|
+| https://localhost:8080 | ArgoCD UI |
+| https://github.com/TamDepTraii/k8s.git | GitHub Repository |
+| http://localhost:8080/actuator/health | Health Check |
+| http://localhost:8080/actuator/metrics | Metrics |
+| http://localhost:9090 | Prometheus |
+
+---
+
+## 🔐 Credentials
+
+```
+=== ArgoCD ===
+Username: admin
+Password: Tmpr4695958
+URL: https://localhost:8080
+
+=== GitHub ===
+Repository: https://github.com/TamDepTraii/k8s.git
+Branch: main
+
+=== Docker ===
+Image: k8s-demo:latest
+Registry: local (Docker Desktop)
 ```
 
-#### ✅ Cách 2: Skip Tests (90% hiệu quả)
-```bash
-mvn clean package -DskipTests
-mvn spring-boot:build-image -Dspring-boot.build-image.imageName=k8s-demo:latest -DskipTests
-```
-
-#### ✅ Cách 3: Dockerfile (100% hiệu quả) ⭐
-```bash
-mvn clean package -DskipTests
-docker build -t k8s-demo:latest .
-```
-
-### Chi tiết
-
-- **[BUILD_INSTRUCTIONS.md](./BUILD_INSTRUCTIONS.md)** - 4 giải pháp cơ bản
-- **[TROUBLESHOOTING_DETAILED.md](./TROUBLESHOOTING_DETAILED.md)** - ⭐ Đầy đủ nhất (5 giải pháp + diagnostics + so sánh)
-
 ---
 
-## 📊 PROGRESS & PLANNING
+## 📱 Quick Commands
 
-- **[PROGRESS.md](./PROGRESS.md)** - Roadmap toàn bộ project (5 phases)
-  - Phase 1: Development ✅
-  - Phase 2: Docker 🔄 (FIX BUILD ERROR)
-  - Phase 3: Kubernetes ⏳
-  - Phase 4: Advanced ⏳
-  - Phase 5: CI/CD ⏳
+```powershell
+# === ArgoCD ===
+kubectl -n argocd port-forward svc/argocd-server 8080:443
+kubectl -n argocd get pods
+kubectl -n argocd logs deployment/argocd-server
 
----
+# === Kubernetes ===
+kubectl get pods
+kubectl get svc
+kubectl logs -f <pod>
+kubectl describe pod <pod>
+kubectl port-forward svc/<svc> 8080:8080
 
-## 🎯 PHASE 2: DOCKER (HIỆN TẠI)
+# === Docker ===
+docker images
+docker ps
+docker logs <container>
+docker build -t <image> .
 
-### Step 2.1: Fix Build Error
-**File tham khảo**: TROUBLESHOOTING_DETAILED.md
-- [ ] Try Giải pháp 1 (Clean & Retry)
-- [ ] If fail, try Giải pháp 2 (Skip Tests)
-- [ ] If fail, try Giải pháp 3 (Dockerfile)
-
-### Step 2.2: Test Locally
-```bash
-docker run -p 8080:8080 k8s-demo:latest
-curl http://localhost:8080/actuator/health
-```
-
-### Step 2.3: Verify Success
-```bash
-docker images | grep k8s-demo
+# === Git ===
+git status
+git add -A
+git commit -m "message"
+git push origin main
 ```
 
 ---
 
-## 📋 KIỂM SOÁT CHẤT LƯỢNG
+## 🎓 Learning Path
 
-### System Diagnostics (Nếu vẫn lỗi)
-```bash
-ping github.com                    # Internet
-docker ps                          # Docker
-java -version                      # Java >= 11
-mvn -v                            # Maven >= 3.6
-docker system df                   # Disk space
-```
+### Beginner (1-2 hours)
+1. [00_START_HERE.md](00_START_HERE.md)
+2. [ARGOCD_LOGIN_SOLUTION.md](ARGOCD_LOGIN_SOLUTION.md)
+3. [GITHUB_PUSH_GUIDE.md](GITHUB_PUSH_GUIDE.md)
 
-**File tham khảo**: TROUBLESHOOTING_DETAILED.md → Giải pháp 5
+### Intermediate (2-4 hours)
+1. [README_SETUP.md](README_SETUP.md)
+2. [K8S_GUIDE.md](K8S_GUIDE.md)
+3. [README-CICD.md](README-CICD.md)
 
----
-
-## 🔗 CẤU TRÚC CÁC FILE
-
-```
-.
-├── README.md                          ← Start here (main guide)
-├── BUILD_INSTRUCTIONS.md              ← Quick fix (4 solutions)
-├── TROUBLESHOOTING_DETAILED.md        ← Detailed guide (5 solutions)
-├── PROGRESS.md                        ← Project roadmap (5 phases)
-├── SOLUTION_SUMMARY.md                ← Email response
-├── EMAIL_RESPONSE.md                  ← Quick response
-├── DOCUMENTATION_INDEX.md             ← This file
-│
-├── src/
-│   ├── main/java/com/example/k8s/
-│   │   ├── K8sApplication.java        ← Main app
-│   │   └── controller/
-│   │       └── TestController.java    ← REST controller
-│   └── resources/
-│       └── application.properties
-│
-├── k8s/
-│   ├── namespace.yaml                 ← K8s namespace
-│   ├── deployment.yaml                ← K8s deployment
-│   ├── service.yaml                   ← K8s service
-│   ├── configmap.yaml                 ← K8s configmap
-│   ├── application.properties         ← App config
-│   └── hpa.yaml                       ← Auto-scaling (optional)
-│
-├── Dockerfile                         ← Docker image (alternative)
-├── docker-compose.yml                 ← Docker Compose
-├── pom.xml                           ← Maven config
-└── .gitignore                        ← Git ignore rules
-```
+### Advanced (4+ hours)
+1. [PHASE3_KUBERNETES.md](PHASE3_KUBERNETES.md)
+2. [docs/CICD-GUIDE.md](docs/CICD-GUIDE.md)
+3. [TROUBLESHOOTING_DETAILED.md](TROUBLESHOOTING_DETAILED.md)
 
 ---
 
-## 📖 BẢNG HƯ ĐỀ
+## 📝 Version History
 
-| Tình huống | File tham khảo | Giải pháp |
-|-----------|----------------|----------|
-| Bắt đầu dự án | README.md | Đọc từ đầu |
-| Gặp lỗi build image | BUILD_INSTRUCTIONS.md | 4 cách nhanh |
-| Lỗi vẫn tiếp diễn | TROUBLESHOOTING_DETAILED.md | 5 cách chi tiết |
-| Muốn hiểu root cause | TROUBLESHOOTING_DETAILED.md → Nguyên nhân | Đọc phần "Nguyên nhân gốc" |
-| Cần chẩn đoán hệ thống | TROUBLESHOOTING_DETAILED.md → Giải pháp 5 | System check |
-| Muốn xem plan toàn bộ | PROGRESS.md | 5 phases |
-| Muốn Dockerfile alternative | TROUBLESHOOTING_DETAILED.md → Giải pháp 3 | 100% hiệu quả |
+| Phiên Bản | Ngày | Nội Dung |
+|-----------|------|---------|
+| 1.0 | 2025-10-27 | Initial setup |
+| 1.1 | 2025-10-27 | ArgoCD configuration |
+| 1.2 | 2025-10-27 | Documentation complete |
 
 ---
 
-## ⏱️ THỜI GIAN ƯỚC TÍNH
+## 🤝 Support
 
-| Tác vụ | Thời gian | Difficulty |
-|--------|---------|-----------|
-| Clean & Retry (Giải pháp 1) | 5 phút | ⭐ |
-| Skip Tests (Giải pháp 2) | 5 phút | ⭐ |
-| Dockerfile (Giải pháp 3) | 3 phút | ⭐ |
-| System Diagnostics | 2 phút | ⭐⭐ |
-| Phase 2 (Docker) - Complete | 15-20 phút | ⭐⭐ |
-| Phase 3 (Kubernetes) | 30 phút | ⭐⭐⭐ |
-| Phase 4 (Advanced) | 1 giờ | ⭐⭐⭐⭐ |
-| Phase 5 (CI/CD) | 2 giờ | ⭐⭐⭐⭐⭐ |
+Nếu gặp vấn đề:
 
----
+1. **Kiểm tra logs**
+   ```powershell
+   kubectl logs <pod>
+   kubectl describe pod <pod>
+   ```
 
-## 🎯 NEXT ACTION
+2. **Xem Troubleshooting**
+   → [TROUBLESHOOTING_DETAILED.md](TROUBLESHOOTING_DETAILED.md)
 
-**Ngay bây giờ:**
-
-1. Mở [TROUBLESHOOTING_DETAILED.md](./TROUBLESHOOTING_DETAILED.md)
-2. Thử **Giải pháp 1** (Clean & Retry)
-3. Báo cáo kết quả
-
-**Nếu success:**
-- Chuyển Phase 2.2 (Test Docker)
-- Sau đó Phase 3 (Kubernetes)
-
-**Nếu fail:**
-- Thử **Giải pháp 2** (Skip Tests)
-- Nếu vẫn fail → Thử **Giải pháp 3** (Dockerfile - 100% work)
+3. **Check prerequisites**
+   ```powershell
+   .\setup-check.ps1
+   ```
 
 ---
 
-## 🔗 LINK NGOÀI
+## 📚 External Resources
 
 - [Spring on Kubernetes](https://spring.io/guides/topicals/spring-on-kubernetes)
-- [Spring Boot Build Image](https://spring.io/blog/2020/08/14/buildpacks-and-spring-boot-0-5-0)
-- [Kubernetes Docs](https://kubernetes.io/docs/)
-- [Docker Docs](https://docs.docker.com/)
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [ArgoCD Documentation](https://argo-cd.readthedocs.io/)
+- [Docker Documentation](https://docs.docker.com/)
 
 ---
 
-## 📞 SUPPORT
+**Last Updated: 2025-10-27**
 
-- GitHub Issues: https://github.com/TamDepTraii/k8s/issues
-- Documentation: All .md files in root folder
-- Questions: Check TROUBLESHOOTING_DETAILED.md first
-
----
-
-**Last Updated**: 2025-10-26  
-**Status**: 🔄 Phase 2 (Fix Docker Build)  
-**Version**: 1.0  
-
----
-
-*Tìm file mà bạn cần ở trên, rồi đọc nó! 📚*
+**Happy Deploying! 🚀**
 
