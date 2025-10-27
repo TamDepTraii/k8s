@@ -37,8 +37,8 @@ spec:
         fsGroup: 1000
       containers:
       - name: k8s-demo
-        image: ghcr.io/tamdeptraii/k8s-demo/k8s-app:latest
-        imagePullPolicy: IfNotPresent
+        image: k8s-demo:latest
+        imagePullPolicy: Never
         ports:
         - name: http
           containerPort: 8080
@@ -99,11 +99,9 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: k8s-demo-config
+            name: k8s-config
         - name: tmp
           emptyDir: {}
-            name: k8s-demo-config
-            optional: true
 ---
 apiVersion: v1
 kind: Service
