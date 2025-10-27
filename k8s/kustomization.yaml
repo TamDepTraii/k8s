@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: k8s-demo
 
 # Common labels applied to all resources
-commonLabels:
+labels:
   app: k8s-demo
   managed-by: argocd
   version: v1
@@ -17,40 +17,20 @@ commonAnnotations:
 
 # Resources to include
 resources:
-  - namespace.yaml
   - configmap.yaml
   - service.yaml
   - deployment.yaml
   - hpa.yaml
   - servicemonitor.yaml
 
-# Images to build or pull
+# Images configuration
 images:
   - name: k8s-demo
-    newName: ghcr.io/tamdeptraii/k8s-demo/k8s-app
+    newName: k8s-demo
     newTag: latest
-
-# ConfigMap generator
-configMapGenerator:
-  - name: k8s-demo-config
-    files:
-      - application.properties=configmap.yaml
 
 # Replicas override
 replicas:
   - name: k8s-demo
     count: 3
-
-# Patches for specific resources
-patches:
-  - target:
-      kind: Deployment
-      name: k8s-demo
-    patch: |-
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/limits/cpu
-        value: "500m"
-      - op: replace
-        path: /spec/template/spec/containers/0/resources/limits/memory
-        value: "512Mi"
 
