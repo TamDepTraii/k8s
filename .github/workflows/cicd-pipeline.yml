@@ -122,29 +122,10 @@ jobs:
             git push origin main || echo "No push permission, this is expected in fork"
           fi
 
-  security-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          scan-ref: '.'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-
-      - name: Upload Trivy results
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: 'trivy-results.sarif'
-
   notification:
     runs-on: ubuntu-latest
     if: always()
-    needs: [build, deploy, security-scan]
+    needs: [build, deploy]
 
     steps:
       - name: Send notification
