@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: k8s-demo
+  namespace: k8s-demo
+  labels:
+    app: k8s-demo
+    prometheus: kube-prometheus
+spec:
+  selector:
+    matchLabels:
+      app: k8s-demo
+  endpoints:
+  - port: http
+    path: /actuator/prometheus
+    interval: 30s
+    scrapeTimeout: 10s
+

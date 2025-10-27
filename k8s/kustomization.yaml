@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Namespace for all resources
+namespace: k8s-demo
+
+# Common labels applied to all resources
+commonLabels:
+  app: k8s-demo
+  managed-by: argocd
+  version: v1
+
+# Common annotations applied to all resources
+commonAnnotations:
+  description: "K8s Demo Application"
+  owner: "DevOps Team"
+
+# Resources to include
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - service.yaml
+  - deployment.yaml
+  - hpa.yaml
+  - servicemonitor.yaml
+
+# Images to build or pull
+images:
+  - name: k8s-demo
+    newName: ghcr.io/tamdeptraii/k8s-demo/k8s-app
+    newTag: latest
+
+# ConfigMap generator
+configMapGenerator:
+  - name: k8s-demo-config
+    files:
+      - application.properties=configmap.yaml
+
+# Replicas override
+replicas:
+  - name: k8s-demo
+    count: 3
+
+# Patches for specific resources
+patches:
+  - target:
+      kind: Deployment
+      name: k8s-demo
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/limits/cpu
+        value: "500m"
+      - op: replace
+        path: /spec/template/spec/containers/0/resources/limits/memory
+        value: "512Mi"
+

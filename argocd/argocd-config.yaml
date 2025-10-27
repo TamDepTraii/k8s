@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  # Enable webhook
+  application.instanceLabelKey: argocd.argoproj.io/instance
+  # Webhook events
+  webhooks: |
+    - id: github
+      url: https://your-argocd-url/api/webhook
+  # Repository credentials
+  repositories: |
+    - type: git
+      url: https://github.com/TamDepTraii/k8s.git
+      usernameSecret:
+        name: github-credentials
+        key: username
+      passwordSecret:
+        name: github-credentials
+        key: password
+
