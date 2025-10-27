@@ -1,12 +1,15 @@
-# Spring Boot on Kubernetes - K8s Demo
+# 🚀 Spring Boot on Kubernetes - K8s Demo
 
-Dự án demo triển khai ứng dụng Spring Boot lên Kubernetes theo hướng dẫn từ Spring.io.
+Dự án demo triển khai ứng dụng Spring Boot lên Kubernetes với ArgoCD CI/CD.
+
+**Status**: ✅ Ready to Deploy
+**GitHub**: https://github.com/TamDepTraii/k8s.git
 
 ## 📋 Yêu cầu
 
-- Java 11+
+- Java 11+ (hoặc JDK 17)
 - Docker Desktop (với Kubernetes enabled)
-- Maven 3.6+
+- Maven 3.6+ (có sẵn: `mvnw.cmd`)
 - kubectl
 - Git
 
