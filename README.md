@@ -1,4 +1,6 @@
-# K8s Demo - CI/CD Pipeline với GitHub Actions và ArgoCD
+#Midterm - CI/CD Pipeline với GitHub Actions và ArgoCD
+<img width="2441" height="1387" alt="image" src="https://github.com/user-attachments/assets/638ece9c-040c-493e-b91c-1e913fe793da" />
+![Uploading image.png…]()
 
 ## Mô tả dự án
 Ứng dụng Spring Boot được tự động build, test, containerize và deploy lên Kubernetes sử dụng GitHub Actions làm CI và ArgoCD làm CD (GitOps).
