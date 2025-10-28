@@ -1,120 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-demo
-  namespace: k8s-demo
-  labels:
-    app: k8s-demo
-    version: v1
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8080"
-    prometheus.io/path: "/actuator/prometheus"
+  name: my-simple-app
+  namespace: my-simple-app
 spec:
-  replicas: 3
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+  replicas: 1
   selector:
     matchLabels:
-      app: k8s-demo
+      app: my-simple-app
   template:
     metadata:
       labels:
-        app: k8s-demo
-        version: v1
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/port: "8080"
-        prometheus.io/path: "/actuator/prometheus"
+        app: my-simple-app
     spec:
-      serviceAccountName: k8s-demo
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        fsGroup: 1000
       containers:
-      - name: k8s-demo
-        image: k8s-demo:latest
-        imagePullPolicy: Never
-        ports:
-        - name: http
-          containerPort: 8080
-          protocol: TCP
-        env:
-        - name: JAVA_OPTS
-          value: "-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:MaxRAMPercentage=75.0"
-        - name: SPRING_APPLICATION_NAME
-          value: "k8s-demo"
-        - name: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
-          value: "health,metrics,prometheus,info"
-        resources:
-          requests:
-            cpu: "200m"
-            memory: "256Mi"
-          limits:
-            cpu: "500m"
-            memory: "512Mi"
-        livenessProbe:
-          httpGet:
-            path: /actuator/health/liveness
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /actuator/health/readiness
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 10
-          periodSeconds: 5
-          timeoutSeconds: 3
-          failureThreshold: 3
-        startupProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 0
-          periodSeconds: 5
-          timeoutSeconds: 3
-          failureThreshold: 30
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL
-          readOnlyRootFilesystem: true
-        volumeMounts:
-          - name: config-volume
-            mountPath: /workspace/config
-            readOnly: true
-          - name: tmp
-            mountPath: /tmp
-      volumes:
-        - name: config-volume
-          configMap:
-            name: k8s-config
-        - name: tmp
-          emptyDir: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: k8s-demo-service
-  labels:
-    app: k8s-demo
-spec:
-  type: ClusterIP
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-    name: http
-  selector:
-    app: k8s-demo
+        - name: my-simple-app
+          image: tamdz1201/my-simple-app:latest
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
