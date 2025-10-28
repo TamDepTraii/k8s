@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: k8s-demo
 
-labels:
+commonLabels:
   app: k8s-demo
   managed-by: argocd
 
@@ -19,4 +19,3 @@ images:
   - name: k8s-demo
     newName: ghcr.io/tamdeptraii/k8s/k8s-app
     newTag: latest
-
