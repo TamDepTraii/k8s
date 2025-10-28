@@ -1,14 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: k8s-demo
+namespace: my-simple-app
 
 commonLabels:
-  app: k8s-demo
+  app: my-simple-app
   managed-by: argocd
 
 commonAnnotations:
-  description: "K8s Demo Application"
+  description: "My Simple App deployed with ArgoCD"
 
 resources:
   - namespace.yaml
@@ -16,6 +16,6 @@ resources:
   - deployment.yaml
 
 images:
-  - name: k8s-demo
-    newName: ghcr.io/tamdeptraii/k8s/k8s-app
+  - name: my-simple-app
+    newName: ghcr.io/tamdeptraii/k8s/my-simple-app
     newTag: latest
